@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 
 import { EvilIcons } from '@expo/vector-icons';
 
+import LogInScreen from './LogInScreen';
+import SignUp from './SignUp';
 import Login from './login';
 import TodoLists from "./lists";
 import AddTask from "./addTask";
@@ -18,19 +20,16 @@ import { FIREBASE_AUTH } from '../../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 
 
-
-
 const Stack = createNativeStackNavigator();
 
 const MainComponent= ()=> {
-
 
 
 return(
     <SafeAreaView style={[styles.container]}>
         <StatusBar  barStyle={"default"} showHideTransition={"fade"} hidden={false}/>
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerTitleStyle:{fontWeight:"bold"}}}>
+            <Stack.Navigator screenOptions={{headerTitleStyle:{fontWeight:"bold"}}} initialRouteName='LogInScreen'>
 
             <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
 
@@ -53,6 +52,18 @@ return(
                 <Stack.Screen name="Assign Task" component={AssignTask} />
                 
                 <Stack.Screen name="Assigned" component={Assigned} />
+
+                <Stack.Screen 
+                name="SignUp" 
+                component={SignUp} 
+                options={{ headerShown: false}} 
+                />
+
+                <Stack.Screen 
+                name="LogInScreen" 
+                component={LogInScreen} 
+                options={{ headerShown: false}} 
+                />
 
             </Stack.Navigator>
         </NavigationContainer>
